@@ -1,0 +1,13 @@
+from datetime import datetime
+
+def calculate_domain_age(created_str, expires_str):
+    try:
+        created = datetime.strptime(created_str, "%Y-%m-%d")
+        expires = datetime.strptime(expires_str, "%Y-%m-%d")
+        delta = expires - created
+        years = delta.days // 365
+        months = (delta.days % 365) // 30
+        days = (delta.days % 365) % 30
+        return f"{years} years, {months} months, {days} days"
+    except:
+        return "N/A"
